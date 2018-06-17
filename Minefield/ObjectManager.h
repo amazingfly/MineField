@@ -15,7 +15,7 @@ public:
 
     static ObjectManager& GetSingleton();
 
-    int GetNumberOfObjects() { return m_numberOfObjects; }
+    unsigned int GetNumberOfObjects() { return m_numberOfObjects; }
     Object* GetObject(int aIndex) { return m_objects[aIndex]; }
     Object* GetObjectByObjectId(int aObjectId);
     bool IsValidObject(Object* apObject);
@@ -25,7 +25,7 @@ public:
     void AddMineObject(unsigned int aObjectId, float aPosition[3], int aTeam);
 
     int GetNextFindTargetsIndex();
-    void ResetNextFindTargetIndex() { m_nextFindTargetIndex = 0; }
+	void ResetNextFindTargetIndex() { m_nextFindTargetIndex = 0; }
 
     Object* GetObjectWithMostEnemyTargets(int aTeam);
     int GetNumberOfObjectForTeam(int aTeam);
@@ -33,7 +33,7 @@ public:
 private:
 
     Mutex m_lock;
-    int m_numberOfObjects;
+    unsigned int m_numberOfObjects;
     Object* m_objects[cMaximumNumberOfObjects];
 
     int m_nextFindTargetIndex;

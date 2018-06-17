@@ -60,7 +60,7 @@ void ObjectManager::AddMineObject(unsigned int aObjectId, float aPosition[3], in
 
     if(GetRandomFloat32() < 0.1f)
     {
-        m_objects[m_numberOfObjects]->m_bitFlags == Object::OBF_INVULNERABLE;
+        m_objects[m_numberOfObjects]->m_bitFlags = Object::OBF_INVULNERABLE;
     }
 
     m_numberOfObjects++;

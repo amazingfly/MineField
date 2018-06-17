@@ -92,7 +92,7 @@ namespace
         bool done = false;
         while(!done)
         {
-            int index = ObjectManager::GetSingleton().GetNextFindTargetsIndex();
+            unsigned int index = ObjectManager::GetSingleton().GetNextFindTargetsIndex();
             if(index < ObjectManager::GetSingleton().GetNumberOfObjects())
             {
                 Mine* pMineObject = static_cast<Mine*>(ObjectManager::GetSingleton().GetObject(index));
