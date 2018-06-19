@@ -59,7 +59,8 @@ void ObjectManager::AddMineObject(unsigned int aObjectId, float aPosition[3], in
     m_objects[m_numberOfObjects]->SetActive(active);
 
     if(GetRandomFloat32() < 0.1f)
-    {
+    
+		//CHANGE to an assignment: `=` in stead of `==`
         m_objects[m_numberOfObjects]->m_bitFlags = Object::OBF_INVULNERABLE;
     }
 

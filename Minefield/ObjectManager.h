@@ -14,7 +14,7 @@ class ObjectManager
 public:
 
     static ObjectManager& GetSingleton();
-
+	//CHANGE to unsigned int to match types
     unsigned int GetNumberOfObjects() { return m_numberOfObjects; }
     Object* GetObject(int aIndex) { return m_objects[aIndex]; }
     Object* GetObjectByObjectId(int aObjectId);
@@ -33,7 +33,8 @@ public:
 private:
 
     Mutex m_lock;
-    unsigned int m_numberOfObjects;
+    //CHANGE to unsigned int to match types
+	unsigned int m_numberOfObjects;
     Object* m_objects[cMaximumNumberOfObjects];
 
     int m_nextFindTargetIndex;

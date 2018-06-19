@@ -92,6 +92,7 @@ namespace
         bool done = false;
         while(!done)
         {
+			//CHANGE to unsigned into to match types
             unsigned int index = ObjectManager::GetSingleton().GetNextFindTargetsIndex();
             if(index < ObjectManager::GetSingleton().GetNumberOfObjects())
             {

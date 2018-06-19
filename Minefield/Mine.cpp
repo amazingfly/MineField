@@ -45,6 +45,7 @@ void Mine::FindCurrentTargets()
 
     m_targetList.clear();
 
+	//CHANGE to unsigned it to keep with the convention.
     for(unsigned int i = 0; i < ObjectManager::GetSingleton().GetNumberOfObjects(); ++i)
     {
         Object* pObject = ObjectManager::GetSingleton().GetObject(i);
