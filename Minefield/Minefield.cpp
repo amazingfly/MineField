@@ -1,18 +1,16 @@
 //
 // ZOS Software Engineer Applicant Test 2.1.1
 //
-// Submitted by: 
+// Submitted by: Derek Stich
 //
-// Date:
+// Date: 6/24/2018
 //
-// Time taken:
+// Time taken: 12+ hours
 //
-// Notes:
-//
-//
-//
-// 
-//
+/* Notes: This was fun.  I mostly work in golang, I was quite rusty on the syntax of C++.  After I made changes and got it to compile, I thought it was working because the mine counts were all below 1500.  
+I only realized too late that the mines were not actually working, when I changed the way the mine IDs were being created to remove the need for the duplicate mine check.  
+In any case, this was the most fun code test that I have ever tried.  Thanks!
+*/
 #include "stdafx.h"
 
 #include "Windows.h"
