@@ -4,6 +4,7 @@
 #pragma once
 
 #include "Mutex.h"
+#include "vector"
 
 class Object;
 
@@ -16,13 +17,21 @@ public:
     static ObjectManager& GetSingleton();
 	//CHANGE to unsigned int to match types
     unsigned int GetNumberOfObjects() { return m_numberOfObjects; }
-    Object* GetObject(int aIndex) { return m_objects[aIndex]; }
+	//CHANGE new function to manipulate private data
+	void IncrementNumberOfObjects() { m_numberOfObjects++; }
+
+	// not used CHANGE new function to set m_objects size
+	//void SetObjectsVectorSize(int size) { (*m_objects).resize(size); }
+    Object* GetObject(int aIndex) { return (*m_objects)[aIndex]; }
     Object* GetObjectByObjectId(int aObjectId);
     bool IsValidObject(Object* apObject);
 
-    void RemoveObject(unsigned int aObjectId);
+	//CHANGE faster fine object
+	Object* ObjectManager::RecursiveFind(std::vector<Object*> objVec,  unsigned int aObjectId);
 
-    void AddMineObject(unsigned int aObjectId, float aPosition[3], int aTeam);
+    void RemoveObject(unsigned int aObjectId);
+	//CHANGE remove the passing in of ID numbers
+    void AddMineObject( float aPosition[3], int aTeam);
 
     int GetNextFindTargetsIndex();
 	void ResetNextFindTargetIndex() { m_nextFindTargetIndex = 0; }
@@ -35,7 +44,8 @@ private:
     Mutex m_lock;
     //CHANGE to unsigned int to match types
 	unsigned int m_numberOfObjects;
-    Object* m_objects[cMaximumNumberOfObjects];
+	//CHANGE to vector type
+	std::vector<Object*> m_objects[cMaximumNumberOfObjects];
 
     int m_nextFindTargetIndex;
 

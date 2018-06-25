@@ -8,7 +8,7 @@ public:
 
     ~Object() {}
 
-    int GetObjectId() { return m_objectId; }
+    unsigned int GetObjectId() { return m_objectId; }
 
     bool GetActive();
     void SetActive(bool aActive);

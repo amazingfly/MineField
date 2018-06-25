@@ -149,31 +149,32 @@ int main(int aArgc, char* aArgv[])
     if(aArgc > 4)
     {
         g_numberOfMinesPerTeam = atoi(aArgv[4]);
+
     }
 
     printf("Random seed: %d\n", randomSeed);
     printf("Number of worker threads: %d\n", numberOfWorkerThreads);
     printf("Number of teams: %d  \n", g_numberOfTeams);
     printf("Number of mines per team: %d\n", g_numberOfMinesPerTeam);
-
-
     {
         ScopedQueryPerformanceTimer timer("Time taken in milliseconds:");
-
         ObjectManager::GetSingleton();
 
+		//CHANGE need to resize vector first.
+		//::GetSingleton().SetObjectsVectorSize(g_numberOfMinesPerTeam);
+
         // Let's add lots of mine objects to the system before starting things up
-        for(int i = 0; i < g_numberOfTeams; i++)
-        {
+		for (int i = 0; i < g_numberOfTeams; i++)
+		{
             for(int j = 0; j < g_numberOfMinesPerTeam; j++)
             {
                 float position[3];
                 for(int i = 0; i < 3; i++)
                     position[i] = GetRandomFloat32_Range(-1000.0f, 1000.0f);
 
-                unsigned int objectId = GetRandomUInt32() % (g_numberOfMinesPerTeam * 10);
-                ObjectManager::GetSingleton().AddMineObject(objectId, position, i);
-            }
+                //unsigned int objectId = GetRandomUInt32() % (g_numberOfMinesPerTeam * 10);;
+                ObjectManager::GetSingleton().AddMineObject(position, i);
+            };
         }
 
 		for(int i = 0; i < 10; i++)
@@ -219,6 +220,7 @@ int main(int aArgc, char* aArgv[])
             for(int i = 0; i < g_numberOfTeams; i++)
             {
                 Mine* pMine = static_cast<Mine*>(ObjectManager::GetSingleton().GetObjectWithMostEnemyTargets(i));
+				printf("pmine number of targets %d\n", pMine->GetNumberOfEnemyTargets());
                 if(pMine->GetNumberOfEnemyTargets() > 0)
                 {
                     targetsStillFound = true;
@@ -242,7 +244,7 @@ int main(int aArgc, char* aArgv[])
 
         printf("Team %d WINS after %d turns!!\n", winningTeam, numberOfTurns);
     }
-
+	printf("cribby");
     Sleep(-1);
 
     return 0;
